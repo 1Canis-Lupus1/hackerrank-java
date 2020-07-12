@@ -1,0 +1,38 @@
+//Java Anagrams
+
+import java.util.Scanner;
+
+public class Solution {
+
+    static boolean isAnagram(String a, String b) {
+        // Complete the function
+        boolean op=true;
+        if(a.length() != b.length()) op=false;
+        
+        a=a.toLowerCase();
+        b=b.toLowerCase();
+        int[] freq_a=new int[26];
+        int[] freq_b=new int[26];
+        
+        for(int k=0;k<a.length();k++){
+            freq_a[((int)a.charAt(k))-97]++;
+        }
+        for(int l=0;l<b.length();l++){
+            freq_b[((int)b.charAt(l))-97]++;
+        }
+        for(int i=0;i<26;i++){
+            if(freq_a[i] != freq_b[i]) op=false;
+        }
+    return op;
+    }
+
+  public static void main(String[] args) {
+    
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+}
